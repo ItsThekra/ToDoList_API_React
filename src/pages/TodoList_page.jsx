@@ -5,16 +5,18 @@ import axios from 'axios';
 
 function TodoList_page() 
 {
+
   const [task, setTask] = useState('');
   const [tasksList, setTasksList] = useState([]);
 
   const urlAPI = 'https://6836b7b0664e72d28e41cd3e.mockapi.io/character/ToDoList';
 
-  // GET DATA FROM API:
+  // useEffect = to show data as soon as user enter site
   useEffect(() => {
     getTasks();
   }, []);
 
+  //GET DATA FROM API:
   const getTasks = () => {
     axios.get(urlAPI)
       .then(response => {
@@ -27,7 +29,6 @@ function TodoList_page()
 
   // POST TO ADD TASK AND SEND IT TO API
   const postData = () => {
-    // if (task.trim() === '') return;
 
     axios.post(urlAPI, { task: task })
       .then(response => {
@@ -77,7 +78,7 @@ function TodoList_page()
             <span>{item.task}</span>
             <button
               onClick={() => deleteTask(item.id)}
-              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 cursor-pointer"
             >
               Delete
             </button>
