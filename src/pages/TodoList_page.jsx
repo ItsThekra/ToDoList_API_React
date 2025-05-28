@@ -25,8 +25,6 @@ function TodoList_page()
 
   // POST TO ADD TASK AND SEND IT TO API
   const postData = () => {
-    // if (task.trim() === '') return;
-
     axios.post(urlAPI, { task: task })
       .then(response => {
         setTasksList(prev => [...prev, response.data]);
